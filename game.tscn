@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://blxk7ghqxh3n"]
+[gd_scene load_steps=38 format=3 uid="uid://blxk7ghqxh3n"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_lb0j3"]
 [ext_resource type="Script" path="res://dungeon.gd" id="2_pumms"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://wxxksgh6pbce" path="res://assets/icons/path_right_pressed.png" id="17_j503r"]
 [ext_resource type="Texture2D" uid="uid://bt4naqx7wt7v3" path="res://assets/chest1.png" id="17_vvxuc"]
 [ext_resource type="Script" path="res://chest.gd" id="18_53nvr"]
+[ext_resource type="Script" path="res://button.gd" id="18_m6gns"]
 [ext_resource type="Script" path="res://game_over.gd" id="18_s53gm"]
 [ext_resource type="Texture2D" uid="uid://coks15k7ll6tq" path="res://assets/icons/path_up.png" id="20_3mefq"]
 [ext_resource type="Texture2D" uid="uid://dw2fenvoit5e0" path="res://assets/icons/path_up_pressed.png" id="21_yjpxj"]
@@ -84,10 +85,12 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
+offset_left = 25.0
 offset_top = -50.0
-offset_right = 100.0
+offset_right = 125.0
 offset_bottom = 50.0
 grow_vertical = 2
+pivot_offset = Vector2(50, 50)
 theme_override_styles/normal = SubResource("StyleBoxTexture_u5jxq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cqrnr")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_cqrnr")
@@ -95,6 +98,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_jxrpi")
 text = "left"
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("18_m6gns")
 
 [node name="RightButton" type="Button" parent="Dungeon/CanvasLayer/Control"]
 unique_name_in_owner = true
@@ -104,11 +108,13 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -100.0
+offset_left = -125.0
 offset_top = -50.0
+offset_right = -25.0
 offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
+pivot_offset = Vector2(50, 50)
 theme_override_styles/normal = SubResource("StyleBoxTexture_vibsr")
 theme_override_styles/hover = SubResource("StyleBoxTexture_1uxyf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_1uxyf")
@@ -116,6 +122,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_ythkp")
 text = "left"
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("18_m6gns")
 
 [node name="UpButton" type="Button" parent="Dungeon/CanvasLayer/Control"]
 unique_name_in_owner = true
@@ -124,9 +131,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -50.0
+offset_top = 25.0
 offset_right = 50.0
-offset_bottom = 100.0
+offset_bottom = 125.0
 grow_horizontal = 2
+pivot_offset = Vector2(50, 50)
 theme_override_styles/normal = SubResource("StyleBoxTexture_y28t7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_q4e8p")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_q4e8p")
@@ -134,6 +143,21 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_ythkp")
 text = "left"
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("18_m6gns")
+
+[node name="ColorScreen" type="CanvasLayer" parent="Dungeon"]
+layer = 5
+
+[node name="ColorScreen" type="ColorRect" parent="Dungeon/ColorScreen"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.129412, 0.129412, 0.129412, 1)
 
 [node name="Character" type="Node" parent="."]
 script = ExtResource("1_lb0j3")

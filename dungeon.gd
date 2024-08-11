@@ -9,6 +9,8 @@ signal chest_spawned
 @onready var up_button = %UpButton
 @onready var right_button = %RightButton
 
+@onready var color_screen = %ColorScreen
+
 @export var forest_pieces: Array[DungeonPiece]
 @export var cave_pieces: Array[DungeonPiece]
 
@@ -25,6 +27,9 @@ func _ready():
 	update_interface()
 
 func proceed_dungeon():
+	var transition_tween = get_tree().create_tween()
+	transition_tween.tween_property(color_screen, "self_modulate", Color(1.0, 1.0, 1.0, 0.0), 1.5)
+	
 	if current_piece.is_transition:
 		is_cave = !is_cave
 	
