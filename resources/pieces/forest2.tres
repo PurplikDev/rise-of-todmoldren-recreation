@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DungeonPiece" load_steps=3 format=3 uid="uid://c8dlm87nxyjxi"]
+
+[ext_resource type="Texture2D" uid="uid://b0ip04xxbk4y3" path="res://assets/forest2.png" id="1_2w2kv"]
+[ext_resource type="Script" path="res://dungeon_piece.gd" id="2_rdhq7"]
+
+[resource]
+script = ExtResource("2_rdhq7")
+piece_texture = ExtResource("1_2w2kv")
+left = true
+up = true
+right = true
+cave = false
+is_transition = false

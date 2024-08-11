@@ -1,0 +1,79 @@
+[gd_scene load_steps=17 format=3 uid="uid://blxk7ghqxh3n"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_lb0j3"]
+[ext_resource type="Script" path="res://dungeon.gd" id="2_pumms"]
+[ext_resource type="Resource" uid="uid://o0gnk3x653sw" path="res://resources/pieces/forest1.tres" id="3_srubd"]
+[ext_resource type="Resource" uid="uid://c8dlm87nxyjxi" path="res://resources/pieces/forest2.tres" id="4_0nsro"]
+[ext_resource type="Resource" uid="uid://cy4fu05kegwmm" path="res://resources/pieces/forest3.tres" id="5_5s0ax"]
+[ext_resource type="Resource" uid="uid://df7b3m1bx7tli" path="res://resources/pieces/forest4.tres" id="6_eqct1"]
+[ext_resource type="Resource" uid="uid://chn63q12p0yna" path="res://resources/pieces/forest5.tres" id="7_5ygh2"]
+[ext_resource type="Resource" uid="uid://cqwofbsdw4ry5" path="res://resources/pieces/forest6.tres" id="8_xou1d"]
+[ext_resource type="Resource" uid="uid://d0ckjafue1h30" path="res://resources/pieces/forest7.tres" id="9_564e0"]
+[ext_resource type="Resource" uid="uid://6y5m51q1t2og" path="res://resources/pieces/forest8.tres" id="10_rpwb3"]
+[ext_resource type="Resource" uid="uid://bw4blcwer371h" path="res://resources/pieces/cave_enterance.tres" id="11_5t53e"]
+[ext_resource type="Resource" uid="uid://brwb7uuxytqfs" path="res://resources/pieces/cave1.tres" id="12_esdj3"]
+[ext_resource type="Resource" uid="uid://dgt8u01ywpu7q" path="res://resources/pieces/cave2.tres" id="13_onfsn"]
+[ext_resource type="Resource" uid="uid://cqr2c4ac6n2p7" path="res://resources/pieces/cave3.tres" id="14_pvlpy"]
+[ext_resource type="Resource" uid="uid://ddrkk57020uq6" path="res://resources/pieces/cave_exit.tres" id="15_iipay"]
+[ext_resource type="Script" path="res://combat.gd" id="16_3gyog"]
+
+[node name="Game" type="Node"]
+
+[node name="Character" type="Node" parent="."]
+script = ExtResource("1_lb0j3")
+
+[node name="Dungeon" type="Node" parent="."]
+script = ExtResource("2_pumms")
+forest_pieces = Array[Resource("res://dungeon_piece.gd")]([ExtResource("3_srubd"), ExtResource("4_0nsro"), ExtResource("5_5s0ax"), ExtResource("6_eqct1"), ExtResource("7_5ygh2"), ExtResource("8_xou1d"), ExtResource("9_564e0"), ExtResource("10_rpwb3"), ExtResource("11_5t53e")])
+cave_pieces = Array[Resource("res://dungeon_piece.gd")]([ExtResource("12_esdj3"), ExtResource("13_onfsn"), ExtResource("14_pvlpy"), ExtResource("15_iipay")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Dungeon"]
+
+[node name="DungeonBackground" type="TextureRect" parent="Dungeon/CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftButton" type="Button" parent="Dungeon/CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -125.0
+offset_right = 150.0
+offset_bottom = 125.0
+grow_vertical = 2
+text = "left"
+
+[node name="UpButton" type="Button" parent="Dungeon/CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = 150.0
+grow_horizontal = 2
+text = "up"
+
+[node name="RightButton" type="Button" parent="Dungeon/CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -125.0
+offset_bottom = 125.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "right"
+
+[node name="Combat" type="Node" parent="." node_paths=PackedStringArray("character", "dungeon")]
+script = ExtResource("16_3gyog")
+character = NodePath("../Character")
+dungeon = NodePath("../Dungeon")

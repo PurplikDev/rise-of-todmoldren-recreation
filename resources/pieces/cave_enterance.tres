@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DungeonPiece" load_steps=3 format=3 uid="uid://bw4blcwer371h"]
+
+[ext_resource type="Texture2D" uid="uid://clgnj11wbv4i7" path="res://assets/cave_enternace.png" id="1_h7tjf"]
+[ext_resource type="Script" path="res://dungeon_piece.gd" id="2_5cj4n"]
+
+[resource]
+script = ExtResource("2_5cj4n")
+piece_texture = ExtResource("1_h7tjf")
+left = false
+up = true
+right = false
+cave = false
+is_transition = true
