@@ -1,18 +1,25 @@
+class_name PathOptionButton
 extends Button
 
-var is_hovered: bool = false
+@export var path_icon: TextureRect
+
 var ticks: float
+var path_to: Dungeon.RoomType:
+	set(value):
+		path_to = value
+		match value:
+			Dungeon.RoomType.COMBAT: path_icon.texture = load("res://assets/icons/combat.png")
+			Dungeon.RoomType.CHEST: path_icon.texture = load("res://assets/icons/chest.png")
+			_: path_icon.texture = null
+		
+		path_icon.visible = !disabled
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	mouse_entered.connect(func(): is_hovered = true)
-	mouse_exited.connect(func(): is_hovered = false)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_hovered:
+	if is_hovered():
 		ticks += delta * 2.5
 		rotation_degrees = sin(ticks) * 5
 	else:
 		rotation_degrees = 0
+
+func update_icon_visibility():
+	path_icon.visible = !disabled

@@ -10,16 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Rise-of-todmoldren"
+config/name="rise-of-todmoldren-remaster"
 run/main_scene="res://game.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=854
 window/size/viewport_height=480
-window/size/mode=3
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
