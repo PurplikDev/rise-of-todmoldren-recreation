@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://blxk7ghqxh3n"]
+[gd_scene load_steps=23 format=3 uid="uid://blxk7ghqxh3n"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_lb0j3"]
 [ext_resource type="Script" path="res://dungeon.gd" id="2_pumms"]
+[ext_resource type="Script" path="res://dungeon_piece.gd" id="2_u0o1x"]
 [ext_resource type="Resource" uid="uid://o0gnk3x653sw" path="res://resources/pieces/forest1.tres" id="3_srubd"]
 [ext_resource type="Resource" uid="uid://c8dlm87nxyjxi" path="res://resources/pieces/forest2.tres" id="4_0nsro"]
 [ext_resource type="Resource" uid="uid://cy4fu05kegwmm" path="res://resources/pieces/forest3.tres" id="5_5s0ax"]
@@ -14,195 +15,66 @@
 [ext_resource type="Resource" uid="uid://brwb7uuxytqfs" path="res://resources/pieces/cave1.tres" id="12_esdj3"]
 [ext_resource type="Resource" uid="uid://dgt8u01ywpu7q" path="res://resources/pieces/cave2.tres" id="13_onfsn"]
 [ext_resource type="Resource" uid="uid://cqr2c4ac6n2p7" path="res://resources/pieces/cave3.tres" id="14_pvlpy"]
-[ext_resource type="Theme" uid="uid://kajgygmrg8c1" path="res://resources/dungeon_theme.tres" id="15_5m07g"]
 [ext_resource type="Resource" uid="uid://ddrkk57020uq6" path="res://resources/pieces/cave_exit.tres" id="15_iipay"]
-[ext_resource type="Texture2D" uid="uid://dpbcwatgk7mdl" path="res://assets/icons/path_left.png" id="16_0u844"]
 [ext_resource type="Script" path="res://combat.gd" id="16_3gyog"]
-[ext_resource type="Texture2D" uid="uid://ci1swso71e1vt" path="res://assets/icons/path_right.png" id="16_odw0t"]
-[ext_resource type="Texture2D" uid="uid://cx1bukm1axksr" path="res://assets/icons/path_left_pressed.png" id="17_0rhe3"]
+[ext_resource type="Texture2D" uid="uid://c6tdyqgytb7b7" path="res://assets/heal_potion_icon.png" id="16_uxkx8"]
 [ext_resource type="Texture2D" uid="uid://cligdwgikk800" path="res://icon.svg" id="17_1pkng"]
-[ext_resource type="Texture2D" uid="uid://wxxksgh6pbce" path="res://assets/icons/path_right_pressed.png" id="17_j503r"]
 [ext_resource type="Texture2D" uid="uid://bt4naqx7wt7v3" path="res://assets/chest1.png" id="17_vvxuc"]
 [ext_resource type="Script" path="res://chest.gd" id="18_53nvr"]
-[ext_resource type="Script" path="res://button.gd" id="18_m6gns"]
 [ext_resource type="Script" path="res://game_over.gd" id="18_s53gm"]
-[ext_resource type="Texture2D" uid="uid://coks15k7ll6tq" path="res://assets/icons/path_up.png" id="20_3mefq"]
-[ext_resource type="Texture2D" uid="uid://dw2fenvoit5e0" path="res://assets/icons/path_up_pressed.png" id="21_yjpxj"]
-[ext_resource type="Texture2D" uid="uid://cwy2yadkvr2ws" path="res://assets/icons/potion.png" id="24_7mdo1"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5jxq"]
-texture = ExtResource("16_0u844")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cqrnr"]
-texture = ExtResource("17_0rhe3")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxrpi"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vibsr"]
-texture = ExtResource("16_odw0t")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1uxyf"]
-texture = ExtResource("17_j503r")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ythkp"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y28t7"]
-texture = ExtResource("20_3mefq")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q4e8p"]
-texture = ExtResource("21_yjpxj")
 
 [node name="Game" type="Node"]
 
 [node name="Dungeon" type="Node" parent="."]
 script = ExtResource("2_pumms")
-forest_pieces = Array[Resource("res://dungeon_piece.gd")]([ExtResource("3_srubd"), ExtResource("4_0nsro"), ExtResource("5_5s0ax"), ExtResource("6_eqct1"), ExtResource("7_5ygh2"), ExtResource("8_xou1d"), ExtResource("9_564e0"), ExtResource("10_rpwb3"), ExtResource("11_5t53e")])
-cave_pieces = Array[Resource("res://dungeon_piece.gd")]([ExtResource("12_esdj3"), ExtResource("13_onfsn"), ExtResource("14_pvlpy"), ExtResource("15_iipay")])
+forest_pieces = Array[ExtResource("2_u0o1x")]([ExtResource("3_srubd"), ExtResource("4_0nsro"), ExtResource("5_5s0ax"), ExtResource("6_eqct1"), ExtResource("7_5ygh2"), ExtResource("8_xou1d"), ExtResource("9_564e0"), ExtResource("10_rpwb3"), ExtResource("11_5t53e")])
+cave_pieces = Array[ExtResource("2_u0o1x")]([ExtResource("12_esdj3"), ExtResource("13_onfsn"), ExtResource("14_pvlpy"), ExtResource("15_iipay")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Dungeon"]
 
-[node name="Control" type="Control" parent="Dungeon/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("15_5m07g")
-
-[node name="DungeonBackground" type="TextureRect" parent="Dungeon/CanvasLayer/Control"]
+[node name="DungeonBackground" type="TextureRect" parent="Dungeon/CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LeftButton" type="Button" parent="Dungeon/CanvasLayer/Control" node_paths=PackedStringArray("path_icon")]
+[node name="LeftButton" type="Button" parent="Dungeon/CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 25.0
-offset_top = -50.0
-offset_right = 125.0
-offset_bottom = 50.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = 100.0
 grow_vertical = 2
-pivot_offset = Vector2(50, 50)
-theme_override_styles/normal = SubResource("StyleBoxTexture_u5jxq")
-theme_override_styles/hover = SubResource("StyleBoxTexture_cqrnr")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_cqrnr")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_jxrpi")
 text = "left"
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("18_m6gns")
-path_icon = NodePath("../LeftIcon")
 
-[node name="RightButton" type="Button" parent="Dungeon/CanvasLayer/Control" node_paths=PackedStringArray("path_icon")]
+[node name="UpButton" type="Button" parent="Dungeon/CanvasLayer"]
 unique_name_in_owner = true
-layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 75.0
+grow_horizontal = 2
+text = "up"
+
+[node name="RightButton" type="Button" parent="Dungeon/CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -50.0
-offset_right = -25.0
-offset_bottom = 50.0
+offset_left = -75.0
+offset_top = -100.0
+offset_bottom = 100.0
 grow_horizontal = 0
 grow_vertical = 2
-pivot_offset = Vector2(50, 50)
-theme_override_styles/normal = SubResource("StyleBoxTexture_vibsr")
-theme_override_styles/hover = SubResource("StyleBoxTexture_1uxyf")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_1uxyf")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ythkp")
-text = "left"
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("18_m6gns")
-path_icon = NodePath("../RightIcon")
-
-[node name="UpButton" type="Button" parent="Dungeon/CanvasLayer/Control" node_paths=PackedStringArray("path_icon")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -50.0
-offset_top = 25.0
-offset_right = 50.0
-offset_bottom = 125.0
-grow_horizontal = 2
-pivot_offset = Vector2(50, 50)
-theme_override_styles/normal = SubResource("StyleBoxTexture_y28t7")
-theme_override_styles/hover = SubResource("StyleBoxTexture_q4e8p")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_q4e8p")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ythkp")
-text = "left"
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("18_m6gns")
-path_icon = NodePath("../UpIcon")
-
-[node name="LeftIcon" type="TextureRect" parent="Dungeon/CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -415.0
-offset_top = 115.0
-offset_right = -289.0
-offset_bottom = 241.0
-grow_horizontal = 2
-mouse_filter = 2
-expand_mode = 1
-
-[node name="RightIcon" type="TextureRect" parent="Dungeon/CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 289.0
-offset_top = 115.0
-offset_right = 415.0
-offset_bottom = 241.0
-grow_horizontal = 2
-mouse_filter = 2
-expand_mode = 1
-
-[node name="UpIcon" type="TextureRect" parent="Dungeon/CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -63.0
-offset_top = -405.0
-offset_right = 63.0
-offset_bottom = -279.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-expand_mode = 1
-
-[node name="ColorScreen" type="CanvasLayer" parent="Dungeon"]
-layer = 5
-
-[node name="ColorScreen" type="ColorRect" parent="Dungeon/ColorScreen"]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.129412, 0.129412, 0.129412, 1)
+text = "right"
 
 [node name="Character" type="Node" parent="."]
 script = ExtResource("1_lb0j3")
@@ -222,10 +94,8 @@ offset_right = 148.0
 offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 0
-icon = ExtResource("24_7mdo1")
-flat = true
+icon = ExtResource("16_uxkx8")
 icon_alignment = 1
-expand_icon = true
 
 [node name="HealthPotionAmount" type="Label" parent="Character/CanvasLayer/HealthPotionButton"]
 unique_name_in_owner = true
@@ -375,4 +245,4 @@ offset_right = 123.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "restard"
+text = "restart"

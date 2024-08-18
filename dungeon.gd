@@ -9,55 +9,44 @@ signal chest_spawned
 @onready var up_button = %UpButton
 @onready var right_button = %RightButton
 
-@onready var color_screen = %ColorScreen
-
 @export var forest_pieces: Array[DungeonPiece]
 @export var cave_pieces: Array[DungeonPiece]
 
 var current_piece: DungeonPiece
-
-enum RoomType { EMPTY, COMBAT, CHEST }
+var is_cave: bool = false
 
 func _ready():
-	left_button.pressed.connect(proceed_dungeon.bind(left_button))
-	up_button.pressed.connect(proceed_dungeon.bind(up_button))
-	right_button.pressed.connect(proceed_dungeon.bind(right_button))
-	
-	combat_started.connect(lock_buttons)
+	left_button.pressed.connect(proceed_dungeon)
+	up_button.pressed.connect(proceed_dungeon)
+	right_button.pressed.connect(proceed_dungeon)
 	
 	current_piece = forest_pieces.pick_random()
 	update_interface()
+	unlock_buttons()
 
-func proceed_dungeon(button: PathOptionButton):
-	var transition_tween = get_tree().create_tween()
-	transition_tween.tween_property(color_screen, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
-	transition_tween.tween_callback(func(): change_location(button.path_to))
-
-func change_location(room_type: RoomType):
-	current_piece = forest_pieces.pick_random()
+func proceed_dungeon():
+	if current_piece.is_transition:
+		is_cave = !is_cave
 	
-	match room_type:
-		RoomType.COMBAT: 
-			combat_started.emit()
-			lock_buttons()
-		RoomType.CHEST: 
-			chest_spawned.emit()
-			unlock_buttons()
-		_: 
-			unlock_buttons()
+	if is_cave:
+		current_piece = cave_pieces.pick_random()
+	else:
+		current_piece = forest_pieces.pick_random()
+	
+	if randi_range(0, 5) == 3:
+		combat_started.emit()
+		lock_buttons()
+	else:
+		unlock_buttons()
+	
+	if randi_range(0, 3) == 1:
+		chest_spawned.emit()
+		print("chest!")
 	
 	update_interface()
-	var transition_tween = get_tree().create_tween()
-	transition_tween.tween_property(color_screen, "self_modulate", Color(1.0, 1.0, 1.0, 0.0), 0.5)
 
 func update_interface():
 	dungeon_background.texture = current_piece.piece_texture
-	generate_options()
-
-func generate_options():
-	left_button.path_to = random_room_type()
-	up_button.path_to = random_room_type()
-	right_button.path_to = random_room_type()
 
 func lock_buttons():
 	left_button.disabled = true
@@ -68,16 +57,3 @@ func unlock_buttons():
 	left_button.disabled = !current_piece.left
 	up_button.disabled = !current_piece.up
 	right_button.disabled = !current_piece.right
-	
-	left_button.update_icon_visibility()
-	up_button.update_icon_visibility()
-	right_button.update_icon_visibility()
-
-func random_room_type() -> RoomType:
-	var index = randi_range(0, 2)
-	
-	match index:
-		0: return RoomType.EMPTY
-		1: return RoomType.COMBAT
-		2: return RoomType.CHEST
-	return RoomType.EMPTY

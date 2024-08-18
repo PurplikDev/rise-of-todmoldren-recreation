@@ -22,12 +22,7 @@ func end_combat():
 	combat_screen.visible = false
 
 func attack():
-	if character.attack_boost:
-		enemy_health -= randi_range(5 + character.level, 15 + character.level)
-	else:
-		enemy_health -= randi_range(1 + character.level, 10 + character.level)
-	
-	print("enemy is at: ", enemy_health, " health!")
+	enemy_health -= randi_range(1 + character.level, 10 + character.level)
 	
 	if enemy_health > 0:
 		if character.defence_boost:
@@ -39,4 +34,3 @@ func attack():
 		character.xp += randi_range(5, 25)
 		character.health_potion += 1
 		end_combat()
-		print("victory")
