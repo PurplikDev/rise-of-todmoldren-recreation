@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DungeonPiece" load_steps=3 format=3 uid="uid://ddrkk57020uq6"]
 
 [ext_resource type="Texture2D" uid="uid://dt0acjqv1r7k4" path="res://assets/cave_exit.png" id="1_13c03"]
-[ext_resource type="Script" path="res://dungeon_piece.gd" id="2_yt5m5"]
+[ext_resource type="Script" path="res://scripts/dungeon_piece.gd" id="2_yt5m5"]
 
 [resource]
 script = ExtResource("2_yt5m5")

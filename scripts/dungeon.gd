@@ -36,15 +36,7 @@ func proceed_dungeon(button: PathOptionButton):
 func change_location(room_type: RoomType):
 	current_piece = forest_pieces.pick_random()
 	
-	match room_type:
-		RoomType.COMBAT: 
-			combat_started.emit()
-			lock_buttons()
-		RoomType.CHEST: 
-			chest_spawned.emit()
-			unlock_buttons()
-		_: 
-			unlock_buttons()
+	unlock_buttons()
 	
 	update_interface()
 	var transition_tween = get_tree().create_tween()

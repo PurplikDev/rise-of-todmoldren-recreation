@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bq2wwudex6yc7"]
+
+[sub_resource type="SystemFont" id="SystemFont_4rpo4"]
+font_names = PackedStringArray("OCR A")
+oversampling = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhypm"]
+bg_color = Color(0.25, 0.25, 0.25, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76fb1"]
+bg_color = Color(1, 0.35, 0.35, 1)
+
+[resource]
+Label/fonts/font = SubResource("SystemFont_4rpo4")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_lhypm")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_76fb1")
