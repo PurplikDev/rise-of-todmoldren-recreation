@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnw427kbfkixh"]
+[gd_scene load_steps=4 format=3 uid="uid://bnw427kbfkixh"]
 
 [ext_resource type="Texture2D" uid="uid://cligdwgikk800" path="res://icon.svg" id="1_5n8fl"]
 [ext_resource type="Script" path="res://scripts/hero.gd" id="1_a34eo"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftumb"]
+radius = 64.0
+height = 128.0
+
 [node name="Hero" type="Node2D"]
 script = ExtResource("1_a34eo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HeroSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("1_5n8fl")
+
+[node name="MouseHoverArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+disable_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseHoverArea"]
+shape = SubResource("CapsuleShape2D_ftumb")

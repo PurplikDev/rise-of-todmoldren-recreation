@@ -33,7 +33,7 @@ func proceed_dungeon(button: PathOptionButton):
 	transition_tween.tween_property(color_screen, "self_modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
 	transition_tween.tween_callback(func(): change_location(button.path_to))
 
-func change_location(room_type: RoomType):
+func change_location(_room_type: RoomType):
 	current_piece = forest_pieces.pick_random()
 	
 	unlock_buttons()
