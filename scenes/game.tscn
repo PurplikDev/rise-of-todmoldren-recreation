@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://blxk7ghqxh3n"]
+[gd_scene load_steps=43 format=3 uid="uid://blxk7ghqxh3n"]
 
 [ext_resource type="Script" path="res://scripts/dungeon.gd" id="1_ir1j1"]
 [ext_resource type="Script" path="res://scripts/dungeon_piece.gd" id="2_s6t57"]
@@ -26,10 +26,14 @@
 [ext_resource type="Script" path="res://scripts/character.gd" id="24_1yloq"]
 [ext_resource type="Theme" uid="uid://bq2wwudex6yc7" path="res://resources/character_theme.tres" id="25_5tphr"]
 [ext_resource type="Script" path="res://scripts/chest.gd" id="26_qjpaq"]
-[ext_resource type="Texture2D" uid="uid://bt4naqx7wt7v3" path="res://assets/chest1.png" id="27_3yv6q"]
+[ext_resource type="Texture2D" uid="uid://bt4naqx7wt7v3" path="res://assets/old_sprites/chest1.png" id="27_3yv6q"]
 [ext_resource type="PackedScene" uid="uid://bnw427kbfkixh" path="res://scenes/hero.tscn" id="28_fxl00"]
 [ext_resource type="Script" path="res://scripts/hero_team.gd" id="28_n6hfe"]
+[ext_resource type="Texture2D" uid="uid://dyefwcjvqmc6a" path="res://assets/placeholders/plague.png" id="30_1q1vs"]
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="30_kcrms"]
+[ext_resource type="Texture2D" uid="uid://dr3ohjrtuyh35" path="res://assets/placeholders/hellion.png" id="31_113os"]
+[ext_resource type="Texture2D" uid="uid://bb3pt48wbe5oy" path="res://assets/placeholders/highway.png" id="32_qxlij"]
+[ext_resource type="Texture2D" uid="uid://d1unra1k1we6p" path="res://assets/placeholders/leper.png" id="33_1ou1l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxrpi"]
 
@@ -279,23 +283,27 @@ icon = ExtResource("27_3yv6q")
 z_index = 5
 
 [node name="PlayerTeam" type="Node2D" parent="Combat"]
-position = Vector2(327, 280)
+position = Vector2(327, 320)
 script = ExtResource("28_n6hfe")
 
 [node name="Hero" parent="Combat/PlayerTeam" instance=ExtResource("28_fxl00")]
+hero_texture = ExtResource("30_1q1vs")
 
 [node name="EnemyTeam" type="Node2D" parent="Combat"]
-position = Vector2(527, 280)
+position = Vector2(527, 320)
 script = ExtResource("28_n6hfe")
 team_type = 1
 
 [node name="Hero" parent="Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
+hero_texture = ExtResource("31_113os")
 
 [node name="Hero2" parent="Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
 position = Vector2(75, 0)
+hero_texture = ExtResource("32_qxlij")
 
 [node name="Hero3" parent="Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
 position = Vector2(150, 0)
+hero_texture = ExtResource("33_1ou1l")
 
 [node name="GameOver" type="Node" parent="."]
 script = ExtResource("30_kcrms")
@@ -358,5 +366,3 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "restard"
-
-[editable path="Combat/EnemyTeam/Hero2"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy1wxs4yv440h"
-path="res://.godot/imported/forest8.png-ad03d5b9d936d5cba5c8690c52cf0662.ctex"
+uid="uid://bb3pt48wbe5oy"
+path="res://.godot/imported/highway.png-dc86b7ef9a4f844864749a0ea31d81dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/forest8.png"
-dest_files=["res://.godot/imported/forest8.png-ad03d5b9d936d5cba5c8690c52cf0662.ctex"]
+source_file="res://assets/placeholders/highway.png"
+dest_files=["res://.godot/imported/highway.png-dc86b7ef9a4f844864749a0ea31d81dc.ctex"]
 
 [params]
 

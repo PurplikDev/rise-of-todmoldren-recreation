@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DungeonPiece" load_steps=3 format=3 uid="uid://cy4fu05kegwmm"]
 
-[ext_resource type="Texture2D" uid="uid://rearu677ap1q" path="res://assets/forest3.png" id="1_vq80p"]
+[ext_resource type="Texture2D" uid="uid://rearu677ap1q" path="res://assets/old_sprites/forest3.png" id="1_vq80p"]
 [ext_resource type="Script" path="res://scripts/dungeon_piece.gd" id="2_uq5iq"]
 
 [resource]

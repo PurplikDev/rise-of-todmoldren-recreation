@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6tdyqgytb7b7"
-path="res://.godot/imported/heal_potion_icon.png-1f6ca08748501e40f606c2aaf78a7462.ctex"
+uid="uid://dkyt5vgjqhj8j"
+path="res://.godot/imported/d_sword2.png-0afbf6e887f49c3bcc9154354b2068f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/heal_potion_icon.png"
-dest_files=["res://.godot/imported/heal_potion_icon.png-1f6ca08748501e40f606c2aaf78a7462.ctex"]
+source_file="res://assets/old_sprites/d_sword2.png"
+dest_files=["res://.godot/imported/d_sword2.png-0afbf6e887f49c3bcc9154354b2068f0.ctex"]
 
 [params]
 

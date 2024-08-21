@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DungeonPiece" load_steps=3 format=3 uid="uid://bw4blcwer371h"]
 
-[ext_resource type="Texture2D" uid="uid://clgnj11wbv4i7" path="res://assets/cave_enternace.png" id="1_h7tjf"]
+[ext_resource type="Texture2D" uid="uid://clgnj11wbv4i7" path="res://assets/old_sprites/cave_enternace.png" id="1_h7tjf"]
 [ext_resource type="Script" path="res://scripts/dungeon_piece.gd" id="2_5cj4n"]
 
 [resource]

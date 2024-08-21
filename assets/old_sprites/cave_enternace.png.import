@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt0acjqv1r7k4"
-path="res://.godot/imported/cave_exit.png-eb1a76041a7af61a5833cac74811881e.ctex"
+uid="uid://clgnj11wbv4i7"
+path="res://.godot/imported/cave_enternace.png-2528bbc6795e7f75a8a802df7d1b0f35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cave_exit.png"
-dest_files=["res://.godot/imported/cave_exit.png-eb1a76041a7af61a5833cac74811881e.ctex"]
+source_file="res://assets/old_sprites/cave_enternace.png"
+dest_files=["res://.godot/imported/cave_enternace.png-2528bbc6795e7f75a8a802df7d1b0f35.ctex"]
 
 [params]
 

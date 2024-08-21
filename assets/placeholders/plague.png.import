@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clgnj11wbv4i7"
-path="res://.godot/imported/cave_enternace.png-518e1d01f9f74250fa5bcde5d100f4c6.ctex"
+uid="uid://dyefwcjvqmc6a"
+path="res://.godot/imported/plague.png-b7581c9b69bb86b0f333e638ae3ce693.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cave_enternace.png"
-dest_files=["res://.godot/imported/cave_enternace.png-518e1d01f9f74250fa5bcde5d100f4c6.ctex"]
+source_file="res://assets/placeholders/plague.png"
+dest_files=["res://.godot/imported/plague.png-b7581c9b69bb86b0f333e638ae3ce693.ctex"]
 
 [params]
 

@@ -1,4 +1,5 @@
 @tool
+class_name HeroTeam
 extends Node2D
 
 const HERO_SPACING: float = 75.0

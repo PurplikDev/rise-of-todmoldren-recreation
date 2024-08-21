@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt4naqx7wt7v3"
-path="res://.godot/imported/chest1.png-2a5b90a7810b569c78253e247de1e1d5.ctex"
+uid="uid://cjq2s0mtrbbmy"
+path="res://.godot/imported/character.png-107050348f1ffce890dbae46d1a415d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chest1.png"
-dest_files=["res://.godot/imported/chest1.png-2a5b90a7810b569c78253e247de1e1d5.ctex"]
+source_file="res://assets/old_sprites/character.png"
+dest_files=["res://.godot/imported/character.png-107050348f1ffce890dbae46d1a415d1.ctex"]
 
 [params]
 

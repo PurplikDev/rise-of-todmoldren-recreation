@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clfrpw2aqr7mv"
-path="res://.godot/imported/towel_icon.png-16ef67a3031563bf1f126eb313cc33ff.ctex"
+uid="uid://b0ip04xxbk4y3"
+path="res://.godot/imported/forest2.png-2ad924dac4d9ddd857475b34c442ce7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/towel_icon.png"
-dest_files=["res://.godot/imported/towel_icon.png-16ef67a3031563bf1f126eb313cc33ff.ctex"]
+source_file="res://assets/old_sprites/forest2.png"
+dest_files=["res://.godot/imported/forest2.png-2ad924dac4d9ddd857475b34c442ce7f.ctex"]
 
 [params]
 

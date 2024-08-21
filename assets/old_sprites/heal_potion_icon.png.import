@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drjd6rq2rtp6g"
-path="res://.godot/imported/sack.png-91a5dfd8207f1624233040ce99a66cc9.ctex"
+uid="uid://c6tdyqgytb7b7"
+path="res://.godot/imported/heal_potion_icon.png-be7e673a0c5641702c33fead58d29d98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sack.png"
-dest_files=["res://.godot/imported/sack.png-91a5dfd8207f1624233040ce99a66cc9.ctex"]
+source_file="res://assets/old_sprites/heal_potion_icon.png"
+dest_files=["res://.godot/imported/heal_potion_icon.png-be7e673a0c5641702c33fead58d29d98.ctex"]
 
 [params]
 
