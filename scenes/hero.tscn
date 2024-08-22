@@ -1,12 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnw427kbfkixh"]
+[gd_scene load_steps=9 format=3 uid="uid://bnw427kbfkixh"]
 
 [ext_resource type="Script" path="res://scripts/hero_character.gd" id="1_a34eo"]
 [ext_resource type="Texture2D" uid="uid://dyefwcjvqmc6a" path="res://assets/placeholders/plague.png" id="2_l34ds"]
 [ext_resource type="Script" path="res://scripts/scaled_sprite_2d.gd" id="3_wgdkn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftumb"]
-radius = 50.0
+radius = 40.0
 height = 200.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tchgi"]
+bg_color = Color(0.47451, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uptq"]
+bg_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0eue"]
+bg_color = Color(0.47451, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="Theme" id="Theme_8wx6y"]
+Panel/styles/panel = SubResource("StyleBoxFlat_tchgi")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_1uptq")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_t0eue")
 
 [node name="Hero" type="Node2D"]
 script = ExtResource("1_a34eo")
@@ -24,3 +48,30 @@ disable_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseHoverArea"]
 shape = SubResource("CapsuleShape2D_ftumb")
+
+[node name="HealthBarHolder" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 80.0
+offset_right = 35.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme = SubResource("Theme_8wx6y")
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBarHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 25.0
+value = 25.0
+rounded = true
+show_percentage = false

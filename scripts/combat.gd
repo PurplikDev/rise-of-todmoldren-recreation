@@ -4,6 +4,9 @@ extends Node
 @onready var player_team: HeroTeam = %PlayerTeam
 @onready var enemy_team: HeroTeam = %EnemyTeam
 
+@onready var player_hero_name: Label = %PlayerHeroName
+@onready var enemy_hero_name: Label = %EnemyHeroName
+
 var heroes: Array[HeroCharacter]
 var turn_order
 
@@ -26,7 +29,7 @@ func new_turn() -> void:
 	pass
 
 func display_hero_player(hero: HeroCharacter) -> void:
-	print(str("player ", hero.name))
+	player_hero_name.text = str(hero)
 
 func display_hero_enemy(hero: HeroCharacter) -> void:
-	print(str("enemy ", hero.name))
+	enemy_hero_name.text = str(hero)
