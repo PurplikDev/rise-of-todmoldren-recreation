@@ -1,4 +1,14 @@
+@tool
 class_name ScaledSprite2D
 extends Sprite2D
 
-var sprite_scale: Vector2 = Vector2.ZERO
+@export var sprite_scale: float = 150.0:
+	set(value):
+		sprite_scale = value
+		var temp_scale = sprite_scale / texture.get_height()
+		scale = Vector2(temp_scale, temp_scale)
+		print(scale)
+
+func _ready() -> void:
+	var temp_scale = sprite_scale / texture.get_height()
+	scale = Vector2(temp_scale, temp_scale)

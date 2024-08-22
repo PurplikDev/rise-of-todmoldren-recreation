@@ -20,6 +20,7 @@ func _ready() -> void:
 	child_entered_tree.connect(organize_team)
 	child_exiting_tree.connect(organize_team)
 	child_order_changed.connect(func(): organize_team(self)) # doing this just to stop an annoying error
+	organize_team(self)
 
 func organize_team(_node) -> void:
 	for child: Node2D in get_children():

@@ -283,14 +283,14 @@ icon = ExtResource("27_3yv6q")
 z_index = 5
 
 [node name="PlayerTeam" type="Node2D" parent="Combat"]
-position = Vector2(327, 320)
+position = Vector2(327, 280)
 script = ExtResource("28_n6hfe")
 
 [node name="Hero" parent="Combat/PlayerTeam" instance=ExtResource("28_fxl00")]
 hero_texture = ExtResource("30_1q1vs")
 
 [node name="EnemyTeam" type="Node2D" parent="Combat"]
-position = Vector2(527, 320)
+position = Vector2(527, 280)
 script = ExtResource("28_n6hfe")
 team_type = 1
 
@@ -298,11 +298,15 @@ team_type = 1
 hero_texture = ExtResource("31_113os")
 
 [node name="Hero2" parent="Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
-position = Vector2(75, 0)
+position = Vector2(100, 0)
 hero_texture = ExtResource("32_qxlij")
 
 [node name="Hero3" parent="Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
-position = Vector2(150, 0)
+position = Vector2(200, 0)
+hero_texture = ExtResource("33_1ou1l")
+
+[node name="Hero4" parent="Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
+position = Vector2(300, 0)
 hero_texture = ExtResource("33_1ou1l")
 
 [node name="GameOver" type="Node" parent="."]

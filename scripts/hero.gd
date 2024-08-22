@@ -12,10 +12,10 @@ var hover_tween: Tween
 func _ready() -> void:
 	mouse_hover.mouse_entered.connect(func():
 		z_index += 1
-		tween_effect(Vector2(1.0625, 1.0625)))
+		tween_effect(175))
 	mouse_hover.mouse_exited.connect(func():
 		z_index -= 1
-		tween_effect(Vector2(1.0, 1.0)))
+		tween_effect(150))
 	
 	hero_sprite.texture = hero_texture
 	
@@ -25,7 +25,7 @@ func _ready() -> void:
 		else:
 			hero_sprite.flip_h = false
 
-func tween_effect(scale: Vector2) -> void:
+func tween_effect(scale: float) -> void:
 	if hover_tween:
 		hover_tween.kill()
 	hover_tween = get_tree().create_tween()

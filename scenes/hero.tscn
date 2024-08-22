@@ -5,20 +5,21 @@
 [ext_resource type="Script" path="res://scripts/scaled_sprite_2d.gd" id="3_wgdkn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftumb"]
-radius = 64.0
-height = 128.0
+radius = 50.0
+height = 200.0
 
 [node name="Hero" type="Node2D"]
 script = ExtResource("1_a34eo")
 
 [node name="HeroSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-1, 0)
+scale = Vector2(0.342, 0.342)
 texture = ExtResource("2_l34ds")
 script = ExtResource("3_wgdkn")
 
 [node name="MouseHoverArea" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -64)
 disable_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseHoverArea"]
