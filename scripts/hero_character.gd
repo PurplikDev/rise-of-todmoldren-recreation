@@ -1,7 +1,9 @@
-class_name Hero
+class_name HeroCharacter
 extends Node2D
 
-signal hero_hovered(hero: Hero)
+signal hero_hovered(hero: HeroCharacter)
+signal hero_hover_exited(hero: HeroCharacter)
+signal hero_selected(hero: HeroCharacter)
 
 @export_range(1, 4) var hero_size: int = 1
 @export var hero_texture: Texture2D
@@ -10,15 +12,23 @@ signal hero_hovered(hero: Hero)
 @onready var mouse_hover: Area2D = %MouseHoverArea
 
 var hover_tween: Tween
+var is_hovered: bool = false
+
+func _input(event: InputEvent) -> void:
+	if is_hovered && event is InputEventMouseButton && event.is_pressed():
+		hero_selected.emit(self)
 
 func _ready() -> void:
 	mouse_hover.mouse_entered.connect(func():
 		z_index += 1
 		tween_effect(175)
-		hero_hovered.emit(self))
+		hero_hovered.emit(self)
+		is_hovered = true)
 	mouse_hover.mouse_exited.connect(func():
 		z_index -= 1
-		tween_effect(150))
+		tween_effect(150)
+		hero_hover_exited.emit(self)
+		is_hovered = false)
 	
 	hero_sprite.texture = hero_texture
 	
