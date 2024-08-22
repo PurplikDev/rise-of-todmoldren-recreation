@@ -1,6 +1,8 @@
 class_name Hero
 extends Node2D
 
+signal hero_hovered(hero: Hero)
+
 @export_range(1, 4) var hero_size: int = 1
 @export var hero_texture: Texture2D
 
@@ -12,7 +14,8 @@ var hover_tween: Tween
 func _ready() -> void:
 	mouse_hover.mouse_entered.connect(func():
 		z_index += 1
-		tween_effect(175))
+		tween_effect(175)
+		hero_hovered.emit(self))
 	mouse_hover.mouse_exited.connect(func():
 		z_index -= 1
 		tween_effect(150))
@@ -25,8 +28,8 @@ func _ready() -> void:
 		else:
 			hero_sprite.flip_h = false
 
-func tween_effect(scale: float) -> void:
+func tween_effect(new_scale: float) -> void:
 	if hover_tween:
 		hover_tween.kill()
 	hover_tween = get_tree().create_tween()
-	hover_tween.tween_property(hero_sprite, "sprite_scale", scale, 0.125).set_ease(Tween.EASE_IN_OUT)
+	hover_tween.tween_property(hero_sprite, "sprite_scale", new_scale, 0.125).set_ease(Tween.EASE_IN_OUT)

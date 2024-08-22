@@ -1,42 +1,32 @@
 class_name Combat
 extends Node
 
-@export var character: Character
-@export var dungeon: Dungeon
+@onready var player_team: HeroTeam = %PlayerTeam
+@onready var enemy_team: HeroTeam = %EnemyTeam
 
-@onready var combat_screen = %CombatScreen
-@onready var enemy = %Enemy
+var heroes: Array[Hero]
+var turn_order
 
-var enemy_health: int
+func _ready() -> void:
+	start_combat()
 
-func _ready():
-	dungeon.combat_started.connect(start_combat)
-	enemy.pressed.connect(attack)
-
-func start_combat():
-	enemy_health = randi_range(25, 50)
-	combat_screen.visible = true
-
-func end_combat():
-	dungeon.unlock_buttons()
-	combat_screen.visible = false
-
-func attack():
-	if character.attack_boost:
-		enemy_health -= randi_range(5 + character.level, 15 + character.level)
-	else:
-		enemy_health -= randi_range(1 + character.level, 10 + character.level)
+func start_combat() -> void:
+	pass
+	# spawn_enemies()
 	
-	print("enemy is at: ", enemy_health, " health!")
+	for player_hero in player_team.get_children():
+		player_hero.hero_hovered.connect(display_hero_player)
 	
-	if enemy_health > 0:
-		if character.defence_boost:
-			character.damage(randi_range(1, 8))
-		else:
-			character.damage(randi_range(1, 15))
-	else:
-		character.money += randi_range(1, 8)
-		character.xp += randi_range(5, 25)
-		character.health_potion += 1
-		end_combat()
-		print("victory")
+	for enemy_hero in enemy_team.get_children():
+		enemy_hero.hero_hovered.connect(display_hero_enemy)
+	
+	new_turn()
+
+func new_turn() -> void:
+	pass
+
+func display_hero_player(hero: Hero) -> void:
+	print(str("player ", hero.name))
+
+func display_hero_enemy(hero: Hero) -> void:
+	print(str("enemy ", hero.name))

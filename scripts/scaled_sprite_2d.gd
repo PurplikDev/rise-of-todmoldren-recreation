@@ -7,7 +7,6 @@ extends Sprite2D
 		sprite_scale = value
 		var temp_scale = sprite_scale / texture.get_height()
 		scale = Vector2(temp_scale, temp_scale)
-		print(scale)
 
 func _ready() -> void:
 	var temp_scale = sprite_scale / texture.get_height()

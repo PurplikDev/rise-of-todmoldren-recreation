@@ -14,7 +14,7 @@ script = ExtResource("1_a34eo")
 [node name="HeroSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-1, 0)
-scale = Vector2(0.342, 0.342)
+scale = Vector2(0.256849, 0.256849)
 texture = ExtResource("2_l34ds")
 script = ExtResource("3_wgdkn")
 

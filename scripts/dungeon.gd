@@ -1,9 +1,6 @@
 class_name Dungeon
 extends Node
 
-signal combat_started
-signal chest_spawned
-
 @onready var dungeon_background = %DungeonBackground
 @onready var left_button = %LeftButton
 @onready var up_button = %UpButton
@@ -22,8 +19,6 @@ func _ready():
 	left_button.pressed.connect(proceed_dungeon.bind(left_button))
 	up_button.pressed.connect(proceed_dungeon.bind(up_button))
 	right_button.pressed.connect(proceed_dungeon.bind(right_button))
-	
-	combat_started.connect(lock_buttons)
 	
 	current_piece = forest_pieces.pick_random()
 	update_interface()
