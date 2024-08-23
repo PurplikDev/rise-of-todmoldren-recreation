@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Hero" load_steps=3 format=3 uid="uid://11jhqf8gmu8s"]
+
+[ext_resource type="Script" path="res://scripts/resources/hero.gd" id="1_da74g"]
+[ext_resource type="Texture2D" uid="uid://dyefwcjvqmc6a" path="res://assets/placeholders/plague.png" id="2_d8pqi"]
+
+[resource]
+script = ExtResource("1_da74g")
+name = "Plague Doctor"
+texture = ExtResource("2_d8pqi")
+hero_size = 1
+health = 20
+defence = 0
+speed = 7

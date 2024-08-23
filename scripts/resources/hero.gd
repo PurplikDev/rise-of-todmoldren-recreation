@@ -5,10 +5,14 @@ extends Resource
 
 # sprite stuff here?
 
-@export var health: int = 25
+@export var texture: Texture2D
+
+@export_range(1, 4) var hero_size: int = 1
 
 # attacks array?
 
 @export_category("Stats")
-
+@export var health: int = 25
+@export var defence: int = 10
+@export var speed: int = 5
 # no random generation, handcrafted characters :3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://blxk7ghqxh3n"]
+[gd_scene load_steps=46 format=3 uid="uid://blxk7ghqxh3n"]
 
 [ext_resource type="Script" path="res://scripts/dungeon.gd" id="1_ir1j1"]
 [ext_resource type="Script" path="res://scripts/dungeon_piece.gd" id="2_s6t57"]
@@ -31,9 +31,10 @@
 [ext_resource type="Script" path="res://scripts/combat.gd" id="28_y64no"]
 [ext_resource type="Texture2D" uid="uid://dyefwcjvqmc6a" path="res://assets/placeholders/plague.png" id="30_1q1vs"]
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="30_kcrms"]
-[ext_resource type="Texture2D" uid="uid://dr3ohjrtuyh35" path="res://assets/placeholders/hellion.png" id="31_113os"]
-[ext_resource type="Texture2D" uid="uid://bb3pt48wbe5oy" path="res://assets/placeholders/highway.png" id="32_qxlij"]
-[ext_resource type="Texture2D" uid="uid://d1unra1k1we6p" path="res://assets/placeholders/leper.png" id="33_1ou1l"]
+[ext_resource type="Resource" uid="uid://11jhqf8gmu8s" path="res://resources/heroes/plague_doctor.tres" id="30_xqbyd"]
+[ext_resource type="Resource" uid="uid://cnommwqikoway" path="res://resources/heroes/hellion.tres" id="31_65sem"]
+[ext_resource type="Resource" uid="uid://cdhn4jwwrukiv" path="res://resources/heroes/highway_man.tres" id="32_6obck"]
+[ext_resource type="Resource" uid="uid://c0ahf34dnidlc" path="res://resources/heroes/leper.tres" id="33_upjx8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxrpi"]
 
@@ -56,6 +57,13 @@ texture = ExtResource("22_emw6h")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y28t7"]
 texture = ExtResource("23_gkv3s")
+
+[sub_resource type="SystemFont" id="SystemFont_4in4j"]
+font_names = PackedStringArray("OCR A")
+oversampling = 10.0
+
+[sub_resource type="Theme" id="Theme_27bd0"]
+Label/fonts/font = SubResource("SystemFont_4in4j")
 
 [node name="Game" type="Node"]
 
@@ -244,36 +252,36 @@ script = ExtResource("28_y64no")
 
 [node name="Combat" type="Node2D" parent="Combat"]
 z_index = 5
-position = Vector2(450, 225)
+position = Vector2(427, 225)
 
 [node name="PlayerTeam" type="Node2D" parent="Combat/Combat"]
 unique_name_in_owner = true
-position = Vector2(-100, 0)
+position = Vector2(-75, 0)
 script = ExtResource("28_n6hfe")
 
 [node name="Hero" parent="Combat/Combat/PlayerTeam" instance=ExtResource("28_fxl00")]
-hero_texture = ExtResource("30_1q1vs")
+hero = ExtResource("30_xqbyd")
 
 [node name="EnemyTeam" type="Node2D" parent="Combat/Combat"]
 unique_name_in_owner = true
-position = Vector2(100, 0)
+position = Vector2(75, 0)
 script = ExtResource("28_n6hfe")
 team_type = 1
 
 [node name="Hero" parent="Combat/Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
-hero_texture = ExtResource("31_113os")
+hero = ExtResource("31_65sem")
 
 [node name="Hero2" parent="Combat/Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
-position = Vector2(75, 0)
-hero_texture = ExtResource("32_qxlij")
+position = Vector2(85, 0)
+hero = ExtResource("32_6obck")
 
 [node name="Hero3" parent="Combat/Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
-position = Vector2(150, 0)
-hero_texture = ExtResource("33_1ou1l")
+position = Vector2(170, 0)
+hero = ExtResource("33_upjx8")
 
 [node name="Hero4" parent="Combat/Combat/EnemyTeam" instance=ExtResource("28_fxl00")]
-position = Vector2(225, 0)
-hero_texture = ExtResource("33_1ou1l")
+position = Vector2(255, 0)
+hero = ExtResource("33_upjx8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Combat"]
 
@@ -285,6 +293,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_27bd0")
 
 [node name="TurnPanel" type="Panel" parent="Combat/CanvasLayer/Control"]
 layout_mode = 1
@@ -302,25 +311,164 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Combat/CanvasLayer/Control/TurnPanel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("30_1q1vs")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PlayerPanel" type="Panel" parent="Combat/CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -150.0
-offset_right = 427.0
+offset_left = 5.0
+offset_top = -145.0
+offset_right = 522.0
+offset_bottom = -5.0
 grow_vertical = 0
 
 [node name="PlayerHeroName" type="Label" parent="Combat/CanvasLayer/Control/PlayerPanel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 155.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 25
 text = "Hero Name"
+vertical_alignment = 1
+
+[node name="Health" type="Control" parent="Combat/CanvasLayer/Control/PlayerPanel"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 146.0
+offset_bottom = 60.0
+
+[node name="PlayerHeroHealth" type="Label" parent="Combat/CanvasLayer/Control/PlayerPanel/Health"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 150.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Health:"
+vertical_alignment = 1
+
+[node name="PlayerHeroHealthDisplay" type="Label" parent="Combat/CanvasLayer/Control/PlayerPanel/Health"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "25/25"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Defence" type="Control" parent="Combat/CanvasLayer/Control/PlayerPanel"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 55.0
+offset_right = 146.0
+offset_bottom = 80.0
+
+[node name="PlayerHeroDefence" type="Label" parent="Combat/CanvasLayer/Control/PlayerPanel/Defence"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 150.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Defence:"
+vertical_alignment = 1
+
+[node name="PlayerHeroDefenceDisplay" type="Label" parent="Combat/CanvasLayer/Control/PlayerPanel/Defence"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "20%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Speed" type="Control" parent="Combat/CanvasLayer/Control/PlayerPanel"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 75.0
+offset_right = 146.0
+offset_bottom = 100.0
+
+[node name="PlayerHeroSpeed" type="Label" parent="Combat/CanvasLayer/Control/PlayerPanel/Speed"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 150.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Speed:"
+vertical_alignment = 1
+
+[node name="PlayerHeroSpeedDisplay" type="Label" parent="Combat/CanvasLayer/Control/PlayerPanel/Speed"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "7"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AttacksPanel" type="Panel" parent="Combat/CanvasLayer/Control/PlayerPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -255.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -85.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="EnemyPanel" type="Panel" parent="Combat/CanvasLayer/Control"]
 layout_mode = 1
@@ -329,17 +477,133 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -427.0
-offset_top = -150.0
+offset_left = -327.0
+offset_top = -145.0
+offset_right = -10.0
+offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="EnemyHeroName" type="Label" parent="Combat/CanvasLayer/Control/EnemyPanel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 155.0
+offset_bottom = 28.0
 text = "Hero Name"
+vertical_alignment = 1
+
+[node name="Health" type="Control" parent="Combat/CanvasLayer/Control/EnemyPanel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 35.0
+offset_right = 146.0
+offset_bottom = 60.0
+
+[node name="EnemyHeroHealth" type="Label" parent="Combat/CanvasLayer/Control/EnemyPanel/Health"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 150.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Health:"
+vertical_alignment = 1
+
+[node name="EnemyHeroHealthDisplay" type="Label" parent="Combat/CanvasLayer/Control/EnemyPanel/Health"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "25/25"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Defence" type="Control" parent="Combat/CanvasLayer/Control/EnemyPanel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 55.0
+offset_right = 146.0
+offset_bottom = 80.0
+
+[node name="EnemyHeroDefence" type="Label" parent="Combat/CanvasLayer/Control/EnemyPanel/Defence"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 150.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Defence:"
+vertical_alignment = 1
+
+[node name="EnemyHeroDefenceDisplay" type="Label" parent="Combat/CanvasLayer/Control/EnemyPanel/Defence"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "20%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Speed" type="Control" parent="Combat/CanvasLayer/Control/EnemyPanel"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 75.0
+offset_right = 146.0
+offset_bottom = 100.0
+
+[node name="EnemyHeroSpeed" type="Label" parent="Combat/CanvasLayer/Control/EnemyPanel/Speed"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 150.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "Speed:"
+vertical_alignment = 1
+
+[node name="EnemyHeroSpeedDisplay" type="Label" parent="Combat/CanvasLayer/Control/EnemyPanel/Speed"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "7"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="GameOver" type="Node" parent="."]
 script = ExtResource("30_kcrms")

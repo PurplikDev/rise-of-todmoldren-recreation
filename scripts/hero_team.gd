@@ -2,7 +2,7 @@
 class_name HeroTeam
 extends Node2D
 
-const HERO_SPACING: float = 75.0
+const HERO_SPACING: float = 85.0
 
 enum TeamType { PLAYER, ENEMY }
 
@@ -24,5 +24,4 @@ func _ready() -> void:
 
 func organize_team(_node) -> void:
 	for child: Node2D in get_children():
-		print(str(child.name, " | ", child.get_index()))
 		child.global_position = Vector2(global_position.x + (HERO_SPACING * child.get_index() * team_direction), global_position.y)

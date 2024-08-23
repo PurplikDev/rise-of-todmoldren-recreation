@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Hero" load_steps=3 format=3 uid="uid://c0ahf34dnidlc"]
+
+[ext_resource type="Script" path="res://scripts/resources/hero.gd" id="1_x4lgi"]
+[ext_resource type="Texture2D" uid="uid://d1unra1k1we6p" path="res://assets/placeholders/leper.png" id="2_n6ano"]
+
+[resource]
+script = ExtResource("1_x4lgi")
+name = "Leper"
+texture = ExtResource("2_n6ano")
+hero_size = 1
+health = 30
+defence = 20
+speed = 2

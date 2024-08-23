@@ -1,15 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnw427kbfkixh"]
+[gd_scene load_steps=8 format=3 uid="uid://bnw427kbfkixh"]
 
 [ext_resource type="Script" path="res://scripts/hero_character.gd" id="1_a34eo"]
 [ext_resource type="Texture2D" uid="uid://dyefwcjvqmc6a" path="res://assets/placeholders/plague.png" id="2_l34ds"]
-[ext_resource type="Script" path="res://scripts/scaled_sprite_2d.gd" id="3_wgdkn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ftumb"]
 radius = 40.0
-height = 200.0
+height = 150.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tchgi"]
-bg_color = Color(0.47451, 0, 0, 1)
+bg_color = Color(0.652227, 2.04556e-06, 1.44392e-07, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -20,7 +19,7 @@ border_color = Color(0.12549, 0.12549, 0.12549, 1)
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0eue"]
-bg_color = Color(0.47451, 0, 0, 1)
+bg_color = Color(0.65098, 0, 0, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -35,12 +34,23 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_t0eue")
 [node name="Hero" type="Node2D"]
 script = ExtResource("1_a34eo")
 
-[node name="HeroSprite" type="Sprite2D" parent="."]
+[node name="HeroSprite" type="TextureRect" parent="."]
 unique_name_in_owner = true
-position = Vector2(-1, 0)
-scale = Vector2(0.256849, 0.256849)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -75.0
+offset_right = 45.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 150)
 texture = ExtResource("2_l34ds")
-script = ExtResource("3_wgdkn")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MouseHoverArea" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -53,14 +63,15 @@ shape = SubResource("CapsuleShape2D_ftumb")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -35.0
+offset_left = -40.0
 offset_top = 80.0
-offset_right = 35.0
+offset_right = 40.0
 offset_bottom = 90.0
 grow_horizontal = 2
 theme = SubResource("Theme_8wx6y")
 
-[node name="ProgressBar" type="ProgressBar" parent="HealthBarHolder"]
+[node name="HealthBar" type="ProgressBar" parent="HealthBarHolder"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

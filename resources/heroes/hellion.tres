@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Hero" load_steps=3 format=3 uid="uid://cnommwqikoway"]
+
+[ext_resource type="Script" path="res://scripts/resources/hero.gd" id="1_cv84b"]
+[ext_resource type="Texture2D" uid="uid://dr3ohjrtuyh35" path="res://assets/placeholders/hellion.png" id="2_5ditr"]
+
+[resource]
+script = ExtResource("1_cv84b")
+name = "Hellion"
+texture = ExtResource("2_5ditr")
+hero_size = 1
+health = 30
+defence = 0
+speed = 5
