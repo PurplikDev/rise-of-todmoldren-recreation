@@ -5,7 +5,14 @@ signal hero_hovered(hero: HeroCharacter)
 signal hero_hover_exited(hero: HeroCharacter)
 signal hero_selected(hero: HeroCharacter)
 
-@export var hero: Hero
+const CORPSE = preload("res://resources/heroes/corpse.tres")
+
+@export var hero: Hero:
+	set(value):
+		hero = value
+		%HeroSprite.texture = hero.texture
+		%HealthBar.max_value = hero.health
+		%HealthBar.value = hero.health
 
 @onready var hero_sprite: TextureRect = %HeroSprite
 @onready var mouse_hover: Area2D = %MouseHoverArea
@@ -13,15 +20,19 @@ signal hero_selected(hero: HeroCharacter)
 
 @onready var health: int = hero.health:
 	set(value):
-		health_bar.value = value
-		if value <= 0:
-			queue_free()
+		if value < 1:
+			if hero != CORPSE:
+				spawn_corpse()
+			else:
+				queue_free()
 		elif value >= hero.health:
 			health = hero.health
 		else:
 			health = value
+			health_bar.value = value
 
 var hover_tween: Tween
+var health_bar_tween: Tween
 var is_hovered: bool = false
 
 func _input(event: InputEvent) -> void:
@@ -45,13 +56,15 @@ func _ready() -> void:
 			hero_sprite.flip_h = true
 		else:
 			hero_sprite.flip_h = false
-	
-	hero_sprite.texture = hero.texture
-	health_bar.max_value = hero.health
-	health_bar.value = hero.health
 
 func tween_effect(new_scale: Vector2) -> void:
 	if hover_tween:
 		hover_tween.kill()
 	hover_tween = get_tree().create_tween()
 	hover_tween.tween_property(hero_sprite, "scale", new_scale, 0.125).set_ease(Tween.EASE_IN_OUT)
+ 
+func spawn_corpse():
+	hero = CORPSE
+	health = CORPSE.health
+	health_bar.max_value = health
+	health_bar.value = health

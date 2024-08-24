@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://blxk7ghqxh3n"]
+[gd_scene load_steps=45 format=3 uid="uid://blxk7ghqxh3n"]
 
 [ext_resource type="Script" path="res://scripts/dungeon.gd" id="1_ir1j1"]
 [ext_resource type="Script" path="res://scripts/dungeon_piece.gd" id="2_s6t57"]
@@ -29,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://bnw427kbfkixh" path="res://scenes/hero.tscn" id="28_fxl00"]
 [ext_resource type="Script" path="res://scripts/hero_team.gd" id="28_n6hfe"]
 [ext_resource type="Script" path="res://scripts/combat.gd" id="28_y64no"]
-[ext_resource type="Texture2D" uid="uid://dyefwcjvqmc6a" path="res://assets/placeholders/plague.png" id="30_1q1vs"]
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="30_kcrms"]
 [ext_resource type="Resource" uid="uid://11jhqf8gmu8s" path="res://resources/heroes/plague_doctor.tres" id="30_xqbyd"]
 [ext_resource type="Resource" uid="uid://cnommwqikoway" path="res://resources/heroes/hellion.tres" id="31_65sem"]
@@ -306,7 +305,8 @@ offset_right = 130.0
 offset_bottom = 60.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Combat/CanvasLayer/Control/TurnPanel"]
+[node name="TurnDisplay" type="HBoxContainer" parent="Combat/CanvasLayer/Control/TurnPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -318,13 +318,6 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Combat/CanvasLayer/Control/TurnPanel/HBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("30_1q1vs")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="PlayerPanel" type="Panel" parent="Combat/CanvasLayer/Control"]
 layout_mode = 1

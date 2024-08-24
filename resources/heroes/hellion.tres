@@ -1,13 +1,23 @@
-[gd_resource type="Resource" script_class="Hero" load_steps=3 format=3 uid="uid://cnommwqikoway"]
+[gd_resource type="Resource" script_class="Hero" load_steps=5 format=3 uid="uid://cnommwqikoway"]
 
 [ext_resource type="Script" path="res://scripts/resources/hero.gd" id="1_cv84b"]
+[ext_resource type="Script" path="res://scripts/resources/action.gd" id="1_ov62x"]
 [ext_resource type="Texture2D" uid="uid://dr3ohjrtuyh35" path="res://assets/placeholders/hellion.png" id="2_5ditr"]
+
+[sub_resource type="Resource" id="Resource_7kw3v"]
+script = ExtResource("1_ov62x")
+action_name = ""
+action_targets_enemy = Array[int]([])
+target_group = 0
+perform_positions = 0
+thing = null
 
 [resource]
 script = ExtResource("1_cv84b")
 name = "Hellion"
 texture = ExtResource("2_5ditr")
 hero_size = 1
+attack = SubResource("Resource_7kw3v")
 health = 30
 defence = 0
 speed = 5

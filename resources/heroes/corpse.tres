@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Hero" load_steps=3 format=3 uid="uid://c4a0y8kd3vyoq"]
+
+[ext_resource type="Script" path="res://scripts/resources/hero.gd" id="1_jm78r"]
+[ext_resource type="Texture2D" uid="uid://cligdwgikk800" path="res://icon.svg" id="2_xqlsc"]
+
+[resource]
+script = ExtResource("1_jm78r")
+name = "Corpse"
+texture = ExtResource("2_xqlsc")
+hero_size = 1
+health = 10
+defence = 0
+speed = 0
